@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.minsait.banco.dto.EmprestimoDtoRequest;
 import com.minsait.banco.entity.Emprestimo;
+import com.minsait.banco.entity.Relacionamento;
 import com.minsait.banco.exception.ClienteNaoEncontradoException;
 import com.minsait.banco.exception.EmprestimoNaoEncontradoException;
 import com.minsait.banco.exception.LimiteEstouradoException;
@@ -29,6 +30,11 @@ public class EmprestimoController {
 	@Autowired
 	public EmprestimoController(EmprestimoService emprestimoService) {
 		this.emprestimoService = emprestimoService;
+	}
+	
+	@GetMapping("/emprestimos/relacionamentos")
+	public Relacionamento[] retornaRelacionamentosDeEmprestimo() {
+		return Relacionamento.values();
 	}
 
 	@PostMapping("/clientes/{cpf}/emprestimos")
